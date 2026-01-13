@@ -1,6 +1,18 @@
 @import "tailwindcss";
 
 :root {
+  /* Rhy-Connect Theme Colors - Green/Teal Theme */
+  --primary-dark: #1a2332;
+  --primary-darker: #0f1419;
+  --accent-primary: #4ade80; /* Green */
+  --accent-primary-hover: #22c55e;
+  --accent-secondary: #2dd4bf; /* Teal */
+  --accent-secondary-hover: #14b8a6;
+  --gradient-start: #84cc16; /* Lime */
+  --gradient-end: #22d3ee; /* Cyan */
+  --text-light: #ffffff;
+  --text-gray: #9ca3af;
+  --text-dark: #171717;
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -12,15 +24,20 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Remove default margins */
+* {
+  box-sizing: border-box;
 }
