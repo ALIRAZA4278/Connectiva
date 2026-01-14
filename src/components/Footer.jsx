@@ -6,7 +6,7 @@ const Footer = () => {
     company: [
       { name: "About Us", href: "/about" },
       { name: "Pricing", href: "/pricing" },
-      { name: "Partnership", href: "/partnership" },
+      { name: "Become a Partner", href: "/become-partner" },
       { name: "Contact", href: "/contact" },
     ],
     services: [
@@ -15,11 +15,11 @@ const Footer = () => {
       { name: "Real Estate", href: "/real-estate" },
       { name: "Cars", href: "/cars" },
     ],
-    support: [
-      { name: "Help Center", href: "/help" },
-      { name: "Terms of Service", href: "/terms" },
-      { name: "Privacy Policy", href: "/privacy" },
-      { name: "Cookie Policy", href: "/cookies" },
+    community: [
+      { name: "Browse Requests", href: "/browse-requests" },
+      { name: "Post a Request", href: "/post-request" },
+      { name: "Get Started", href: "/get-started" },
+      { name: "Help Center", href: "/contact" },
     ],
   };
 
@@ -130,11 +130,11 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Support Links */}
+          {/* Community Links */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Support</h4>
+            <h4 className="text-white font-semibold mb-4">Community</h4>
             <ul className="space-y-3">
-              {footerLinks.support.map((link) => (
+              {footerLinks.community.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}

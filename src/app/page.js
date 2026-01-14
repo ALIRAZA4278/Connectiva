@@ -10,13 +10,16 @@ import CarListings from "@/components/CarListings";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import PricingBanner from "@/components/PricingBanner";
 import HowItWorks from "@/components/HowItWorks";
-import Partnership from "@/components/Partnership";
+import CommunityRequests from "@/components/CommunityRequests";
 import AboutUs from "@/components/AboutUs";
 import Contact from "@/components/Contact";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
     <main>
+       <Navbar />
       <Hero />
       <SearchSection />
       <QuickLinks />
@@ -30,10 +33,11 @@ export default function Home() {
       <PricingBanner />
       <HowItWorks />
       <PricingBanner />
-      <Partnership />
+      <CommunityRequests />
       <PricingBanner />
       <AboutUs />
       <Contact />
+      <Footer />
     </main>
   );
 }

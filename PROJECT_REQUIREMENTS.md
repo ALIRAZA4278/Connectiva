@@ -45,10 +45,53 @@ A central digital platform where local companies, service providers, craftsmen, 
 ## Future Extensions (Scalable Architecture)
 - [ ] Marketplace and classified ads section
 - [ ] Job portal and employment listings
-- [ ] Real estate listings (rent/sale)
+- [x] Real estate listings (rent/sale) - **IMPLEMENTED**
 - [ ] Mini e-commerce or voucher section
 - [ ] Regional events calendar
 - [ ] Optional API connection for mobile app
+
+---
+
+## Platform Feature Clarifications
+
+### Real Estate Module
+- **Buy/Sell**: Supported ✓
+- **Rentals**: Supported ✓ (Finding tenants for rental properties)
+- **Browsing**: FREE for all users (no restrictions)
+- **Listing Properties**: Requires purchasing a package
+  - Property owners, agents, or companies must buy a package to create listings
+  - Same rules apply for both selling and renting properties
+- **Logic**: Rental and sale listings follow the **same subscription and slot system**
+
+### Cars/Vehicles Module
+- **Buy/Sell**: Supported ✓
+- **Browsing**: FREE for all users (no restrictions)
+- **Car Comparison Feature**: FREE for all users ✓
+  - Users can compare multiple cars side by side
+  - View differences in specifications, features, pricing, and attributes
+  - No subscription required to compare
+- **Listing Vehicles**: Requires purchasing a package
+  - Only sellers or dealers who want to list vehicles must purchase a package
+
+### Company Directory Access
+- **IMPORTANT**: NO free company profiles on the platform
+- **Profile Creation Process**:
+  1. Client submits a request on platform OR purchases a package
+  2. **Rhy-Connect team creates the company profile** (not self-service)
+  3. Profiles are professionally created by the team
+- **Browsing**: All users (including free) can browse and view company listings
+- **Platinum Clients**: Receive a **mini website within the platform**
+  - This is treated as a **separate small project** for development team
+  - More Platinum clients = More ongoing development work
+
+### Community Requests Feature
+- **Posting Requests**: All users can post service requests for free
+- **Responding to Requests**: Only paid package members can respond
+- This ensures businesses get quality leads from verified providers
+
+### Key Principle
+> **Browsing is always FREE** - Users can browse companies, properties, vehicles, and jobs without any restrictions.
+> **Creating listings requires a PAID package** - Only package holders can list their businesses, properties, or vehicles.
 
 ---
 
@@ -68,36 +111,124 @@ A central digital platform where local companies, service providers, craftsmen, 
 
 **Project by**: ARFI Werbetechnik GmbH
 **Tagline**: "Stronger Together in the Rhine Valley"
+**Currency**: CHF (Swiss Francs)
 
-### Partner Packages (Detailed)
+---
 
-#### 1. Basic Package
-- Company profile with logo, address, contact details
-- Link to your website
-- Searchable through category and keyword filters
-- **Target**: Small businesses wanting online visibility
+### Pricing Strategy
 
-#### 2. Pro Package
-- All features from Basic
-- Logo in the category slider for extra visibility
-- Article in the Industry Guide / Expert Blog
-- **Target**: Growing, regionally focused companies
+> **IMPORTANT**: Final pricing is NOT fixed yet. Platform is in **market validation phase**.
+> Pricing will be tested with selected customers before public launch.
 
-#### 3. Business+ Package
-- All features from Pro
-- Up to 3 free job postings per year
-- 3 months free banner placement on category page
-- Highlighted listing in the Industry Guide
-- **Target**: Active companies with hiring needs
+**Technical Requirements for Pricing:**
+- ✅ All package prices must be **configurable from Admin Panel**
+- ✅ Pricing values must be **editable without code changes**
+- ✅ Add-ons follow **slot-based pricing** (configurable: price, duration, quantity)
+- ✅ No hardcoded prices in the codebase
 
-#### 4. Platinum Package
-- All features from Business+
-- Own mini website within platform:
-  - Photos
-  - Description
-  - Contact form
-  - Google integration
-- **Target**: Companies aiming for maximum online presence
+**Customer Pricing:**
+- Currently: **Same pricing for all customers** (Connectiva & Non-Connectiva)
+- Future: Differentiation can be added later if needed via admin panel
+
+---
+
+### Partner Packages (Structure)
+
+> Note: Prices shown are PLACEHOLDERS. Final pricing will be set via Admin Panel.
+
+#### 1. Basic Package (Browse Only - Free)
+| Feature | Included |
+|---------|----------|
+| Price | **CHF 0** (Free) |
+| Browse companies, jobs, real estate, cars | ✅ |
+| Use car comparison feature | ✅ |
+| Post community service requests | ✅ |
+| Create company profile | ❌ |
+| Create listings | ❌ |
+| Respond to community requests | ❌ |
+| **Target** | Individual users exploring the platform |
+
+#### 2. Business+ Package (Entry Business Tier)
+| Feature | Included |
+|---------|----------|
+| Price | **CHF XX/month** (Placeholder) |
+| Company profile (created by team) | ✅ |
+| Logo, address, contact details | ✅ |
+| Link to website | ✅ |
+| Searchable in directory | ✅ |
+| Respond to community requests | ✅ |
+| Job posting slots | Based on add-on purchase |
+| **Target** | Small to medium businesses |
+
+#### 3. Premium Package (Advanced Features)
+| Feature | Included |
+|---------|----------|
+| Price | **CHF XX/month** (Placeholder) |
+| All Business+ features | ✅ |
+| Logo in category slider | ✅ |
+| Article in Industry Guide / Expert Blog | ✅ |
+| Highlighted listing | ✅ |
+| Priority in search results | ✅ |
+| Banner placement (limited duration) | ✅ |
+| **Target** | Growing, regionally focused companies |
+
+#### 4. Platinum Package (Maximum Presence)
+| Feature | Included |
+|---------|----------|
+| Price | **CHF XX/month** (Placeholder) |
+| All Premium features | ✅ |
+| **Custom Mini Website** within platform | ✅ |
+| - Photo gallery | ✅ |
+| - Extended description | ✅ |
+| - Contact form | ✅ |
+| - Google Maps integration | ✅ |
+| - SEO optimized | ✅ |
+| Dedicated account manager | ✅ |
+| **Target** | Companies aiming for maximum online presence |
+
+> **Note**: Platinum mini-websites are created as **separate small projects** by the development team.
+
+---
+
+### Add-On Packages (Slot-Based)
+
+All add-ons are **slot-based** and **fully configurable** from Admin Panel.
+
+#### Jobs Add-On
+| Configuration | Description |
+|---------------|-------------|
+| Price per slot | CHF XX (Placeholder) |
+| Duration | Configurable (e.g., 30/60/90 days) |
+| Quantity | Configurable per package |
+
+#### Real Estate Add-On
+| Configuration | Description |
+|---------------|-------------|
+| Price per slot | CHF XX (Placeholder) |
+| Duration | Configurable |
+| Listing types | Sale & Rental (same pricing logic) |
+| Quantity | Configurable per package |
+
+#### Vehicles Add-On
+| Configuration | Description |
+|---------------|-------------|
+| Price per slot | CHF XX (Placeholder) |
+| Duration | Configurable |
+| Quantity | Configurable per package |
+
+---
+
+### Admin Panel Pricing Configuration
+
+The admin panel must allow configuration of:
+```
+- Package prices (monthly/yearly)
+- Add-on slot prices
+- Slot durations
+- Slot quantities per package tier
+- Discounts (future: Connectiva vs Non-Connectiva)
+- Currency display
+```
 
 ### Additional Services & Sponsorships
 
@@ -148,4 +279,29 @@ Rhy-Connect.ch aims to become a long-term digital ecosystem for the Rhine Valley
 
 ---
 
-**Last Updated**: January 2026
+**Last Updated**: January 14, 2026
+
+---
+
+## Changelog
+
+- **Jan 14, 2026 (Update 3)**: Pricing Strategy & Admin Configuration
+  - Platform is in **market validation phase** - no fixed pricing yet
+  - All pricing must be **configurable from Admin Panel** (no hardcoded values)
+  - Add-ons are **slot-based** with configurable: price, duration, quantity
+  - Currency: **CHF** (Swiss Francs)
+  - Connectiva vs Non-Connectiva: **Same pricing for now** (can be added later)
+  - Updated package structure with placeholder pricing
+  - Added Admin Panel pricing configuration requirements
+
+- **Jan 14, 2026 (Update 2)**: Major clarifications on platform access
+  - Browsing is FREE for all modules (Real Estate, Cars, Companies)
+  - Car Comparison: Now FREE for all users
+  - Listing requires PAID package (no free listings anywhere)
+  - Company profiles created BY THE TEAM (not self-service)
+  - Platinum clients get mini website as separate project
+
+- **Jan 14, 2026**: Added Platform Feature Clarifications section
+  - Real Estate: Rentals supported with same logic as sales
+  - Cars: Comparison feature added
+  - Company Profiles: Restricted to paid tiers only
