@@ -25,6 +25,8 @@ const properties = [
     image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80",
     featured: true,
     description: "Stunning mountain views with modern finishes and ski-in/ski-out access.",
+    package: "Platinum",
+    verified: true,
   },
   {
     id: 2,
@@ -40,6 +42,8 @@ const properties = [
     image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80",
     featured: true,
     description: "Beautiful family home with garden, garage, and quiet neighborhood.",
+    package: "Premium",
+    verified: true,
   },
   {
     id: 3,
@@ -55,6 +59,8 @@ const properties = [
     image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80",
     featured: false,
     description: "Premium penthouse with panoramic views and luxury amenities.",
+    package: "Business+",
+    verified: true,
   },
   {
     id: 4,
@@ -70,6 +76,8 @@ const properties = [
     image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=80",
     featured: false,
     description: "Perfect starter apartment near public transport and shopping.",
+    package: "Business+",
+    verified: true,
   },
   {
     id: 5,
@@ -85,6 +93,8 @@ const properties = [
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80",
     featured: true,
     description: "Grand historic villa with spa potential near thermal baths.",
+    package: "Business+",
+    verified: true,
   },
   {
     id: 6,
@@ -100,6 +110,8 @@ const properties = [
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",
     featured: false,
     description: "Modern office space in central location with parking.",
+    package: "Basic",
+    verified: false,
   },
   {
     id: 7,
@@ -115,6 +127,8 @@ const properties = [
     image: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=600&q=80",
     featured: false,
     description: "Traditional Swiss chalet with modern amenities and mountain access.",
+    package: "Basic",
+    verified: false,
   },
   {
     id: 8,
@@ -130,8 +144,17 @@ const properties = [
     image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80",
     featured: false,
     description: "Prime building land with permits ready for construction.",
+    package: "Basic",
+    verified: false,
   },
 ];
+
+const packageColors = {
+  Basic: "bg-gray-500",
+  "Business+": "bg-emerald-500",
+  Premium: "bg-gradient-to-r from-emerald-500 to-teal-500",
+  Platinum: "bg-gradient-to-r from-lime-500 via-emerald-500 to-cyan-500",
+};
 
 export default function RealEstatePage() {
   const [selectedType, setSelectedType] = useState("All Types");
@@ -260,7 +283,10 @@ export default function RealEstatePage() {
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     {/* Badges */}
-                    <div className="absolute top-3 left-3 flex gap-2">
+                    <div className="absolute top-3 left-3 flex flex-wrap gap-2">
+                      <span className={`${packageColors[property.package]} text-white text-xs font-medium px-2.5 py-1 rounded-full`}>
+                        {property.package}
+                      </span>
                       <span className={`text-white text-xs font-medium px-2.5 py-1 rounded-full ${
                         property.listingType === "For Sale" ? "bg-emerald-500" : "bg-teal-500"
                       }`}>
@@ -272,6 +298,13 @@ export default function RealEstatePage() {
                         </span>
                       )}
                     </div>
+                    {property.verified && (
+                      <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-emerald-600 text-xs font-medium px-2 py-1 rounded-full flex items-center gap-1">
+                        <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                    )}
                     {/* Price */}
                     <div className="absolute bottom-3 left-3 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-lg">
                       <span className="font-bold text-gray-900">{property.price}</span>

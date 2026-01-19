@@ -72,7 +72,7 @@ const Footer = () => {
             <Link href="/" className="inline-block mb-4">
               <Image
                 src="/images/logo.png"
-                alt="Rhy-Connect.ch"
+                alt="connectiva"
                 width={160}
                 height={40}
                 className="h-10 w-auto"
@@ -151,7 +151,7 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-gray-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} Rhy-Connect.ch. All rights reserved.
+            © {new Date().getFullYear()} connectiva. All rights reserved.
           </p>
           <p className="text-gray-500 text-sm">
             A project by{" "}

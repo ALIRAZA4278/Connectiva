@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 const featuredNews = {
   id: 1,
   title: "Rhy-Connect Reaches 500 Business Listings Milestone",
-  excerpt: "Our platform has officially reached a significant milestone, with over 500 local businesses now listed on Rhy-Connect.ch, strengthening the Rhine Valley's digital ecosystem.",
+  excerpt: "Our platform has officially reached a significant milestone, with over 500 local businesses now listed on connectiva, strengthening the Rhine Valley's digital ecosystem.",
   image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80",
   category: "Platform News",
   date: "January 10, 2026",

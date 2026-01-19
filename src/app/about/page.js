@@ -92,7 +92,7 @@ export default function AboutPage() {
                 </span>
               </h1>
               <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-                Rhy-Connect.ch was born from a simple observation: local businesses in the Rhine Valley needed a better way to connect with their community. We're building more than a directory—we're creating a digital ecosystem.
+                connectiva was born from a simple observation: local businesses in the Rhine Valley needed a better way to connect with their community. We're building more than a directory—we're creating a digital ecosystem.
               </p>
             </div>
           </div>
@@ -139,7 +139,7 @@ export default function AboutPage() {
                 </h2>
                 <div className="space-y-4 text-gray-600">
                   <p>
-                    Founded in 2024 by ARFI Werbetechnik GmbH, Rhy-Connect.ch emerged from a deep understanding of the Rhine Valley's unique business landscape. Our founder, having worked with hundreds of local businesses, recognized the need for a unified digital platform.
+                    Founded in 2024 by ARFI Werbetechnik GmbH, connectiva emerged from a deep understanding of the Rhine Valley's unique business landscape. Our founder, having worked with hundreds of local businesses, recognized the need for a unified digital platform.
                   </p>
                   <p>
                     Today, we're proud to serve as the primary digital hub for businesses across the region—from Chur to St. Moritz, from small family shops to established enterprises. Our platform connects customers with trusted local providers every day.

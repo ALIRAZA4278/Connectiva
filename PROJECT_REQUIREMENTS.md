@@ -1,7 +1,7 @@
-# Rhy-Connect.ch - Project Requirements & Documentation
+# connectiva - Project Requirements & Documentation
 
 ## Project Overview
-**Rhy-Connect.ch** - Regional Business Hub for the Rhine Valley
+**connectiva** - Regional Business Hub for the Rhine Valley
 
 A central digital platform where local companies, service providers, craftsmen, real estate agents, car dealers, and employers can showcase their businesses. Long-term vision is to build a digital ecosystem connecting companies, individuals, and customers within the region.
 
@@ -266,7 +266,7 @@ The admin panel must allow configuration of:
 ---
 
 ## Platform Vision
-Rhy-Connect.ch aims to become a long-term digital ecosystem for the Rhine Valley:
+connectiva aims to become a long-term digital ecosystem for the Rhine Valley:
 - Connecting local companies
 - Fostering regional collaboration
 - Driving visibility and cooperation

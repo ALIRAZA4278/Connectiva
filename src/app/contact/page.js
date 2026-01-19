@@ -178,8 +178,8 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <p className="text-gray-500 text-sm">Email</p>
-                        <a href="mailto:info@rhy-connect.ch" className="text-gray-900 hover:text-emerald-600 transition-colors">
-                          info@rhy-connect.ch
+                        <a href="mailto:info@connectiva" className="text-gray-900 hover:text-emerald-600 transition-colors">
+                          info@connectiva
                         </a>
                       </div>
                     </div>

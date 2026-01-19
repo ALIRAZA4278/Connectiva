@@ -64,7 +64,7 @@ const Navbar = () => {
             <Link href="/" className="flex items-center">
               <Image
                 src="/images/logo.png"
-                alt="Rhy-Connect.ch"
+                alt="connectiva"
                 width={180}
                 height={45}
                 className="h-10 w-auto"

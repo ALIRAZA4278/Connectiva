@@ -30,6 +30,7 @@ const locations = [
 ];
 
 const companies = [
+  // PLATINUM
   {
     id: 1,
     name: "Alpine Tech Solutions",
@@ -42,6 +43,20 @@ const companies = [
     package: "Platinum",
     verified: true,
   },
+  // PREMIUM
+  {
+    id: 3,
+    name: "Swiss Wellness Center",
+    category: "Health & Wellness",
+    location: "Davos",
+    description: "Premium spa and wellness services in the heart of the Alps.",
+    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&q=80",
+    rating: 4.7,
+    reviews: 156,
+    package: "Premium",
+    verified: true,
+  },
+  // BUSINESS+
   {
     id: 2,
     name: "Rheintal Bäckerei",
@@ -55,18 +70,6 @@ const companies = [
     verified: true,
   },
   {
-    id: 3,
-    name: "Swiss Wellness Center",
-    category: "Health & Wellness",
-    location: "Davos",
-    description: "Premium spa and wellness services in the heart of the Alps.",
-    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&q=80",
-    rating: 4.7,
-    reviews: 156,
-    package: "Platinum",
-    verified: true,
-  },
-  {
     id: 4,
     name: "Berg Construction AG",
     category: "Construction",
@@ -75,7 +78,7 @@ const companies = [
     image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&q=80",
     rating: 4.6,
     reviews: 67,
-    package: "Pro",
+    package: "Business+",
     verified: true,
   },
   {
@@ -90,6 +93,7 @@ const companies = [
     package: "Business+",
     verified: true,
   },
+  // BASIC
   {
     id: 6,
     name: "Alpen Fitness Studio",
@@ -99,7 +103,7 @@ const companies = [
     image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&q=80",
     rating: 4.8,
     reviews: 112,
-    package: "Pro",
+    package: "Basic",
     verified: true,
   },
   {
@@ -111,7 +115,7 @@ const companies = [
     image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&q=80",
     rating: 4.9,
     reviews: 78,
-    package: "Platinum",
+    package: "Basic",
     verified: true,
   },
   {
@@ -130,8 +134,8 @@ const companies = [
 
 const packageColors = {
   Basic: "bg-gray-500",
-  Pro: "bg-teal-500",
   "Business+": "bg-emerald-500",
+  Premium: "bg-gradient-to-r from-emerald-500 to-teal-500",
   Platinum: "bg-gradient-to-r from-lime-500 to-cyan-500",
 };
 

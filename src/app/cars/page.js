@@ -26,6 +26,8 @@ const cars = [
     transmission: "Automatic",
     dealer: "Graubünden Auto Center",
     location: "Chur",
+    package: "Platinum",
+    verified: true,
   },
   {
     id: 2,
@@ -42,6 +44,8 @@ const cars = [
     transmission: "Automatic",
     dealer: "Swiss EV Motors",
     location: "Landquart",
+    package: "Premium",
+    verified: true,
   },
   {
     id: 3,
@@ -58,6 +62,8 @@ const cars = [
     transmission: "Automatic",
     dealer: "Premium Auto AG",
     location: "Chur",
+    package: "Business+",
+    verified: true,
   },
   {
     id: 4,
@@ -74,6 +80,8 @@ const cars = [
     transmission: "Automatic",
     dealer: "Auto Rheintal",
     location: "Bad Ragaz",
+    package: "Business+",
+    verified: true,
   },
   {
     id: 5,
@@ -90,6 +98,8 @@ const cars = [
     transmission: "Automatic",
     dealer: "Porsche Center Graubünden",
     location: "Chur",
+    package: "Business+",
+    verified: true,
   },
   {
     id: 6,
@@ -106,6 +116,8 @@ const cars = [
     transmission: "Automatic",
     dealer: "VW Autohaus Chur",
     location: "Chur",
+    package: "Basic",
+    verified: false,
   },
   {
     id: 7,
@@ -122,6 +134,8 @@ const cars = [
     transmission: "Automatic",
     dealer: "Alpine Motors",
     location: "Davos",
+    package: "Basic",
+    verified: false,
   },
   {
     id: 8,
@@ -138,8 +152,17 @@ const cars = [
     transmission: "Manual",
     dealer: "Commercial Vehicles AG",
     location: "Landquart",
+    package: "Basic",
+    verified: false,
   },
 ];
+
+const packageColors = {
+  Basic: "bg-gray-500",
+  "Business+": "bg-emerald-500",
+  Premium: "bg-gradient-to-r from-emerald-500 to-teal-500",
+  Platinum: "bg-gradient-to-r from-lime-500 via-emerald-500 to-cyan-500",
+};
 
 export default function CarsPage() {
   const [selectedType, setSelectedType] = useState("All Types");
@@ -268,7 +291,10 @@ export default function CarsPage() {
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     {/* Badges */}
-                    <div className="absolute top-3 left-3 flex gap-2">
+                    <div className="absolute top-3 left-3 flex flex-wrap gap-2">
+                      <span className={`${packageColors[car.package]} text-white text-xs font-medium px-2.5 py-1 rounded-full`}>
+                        {car.package}
+                      </span>
                       <span className={`text-white text-xs font-medium px-2.5 py-1 rounded-full ${
                         car.condition === "New" ? "bg-emerald-500" :
                         car.condition === "Certified Pre-Owned" ? "bg-teal-500" : "bg-gray-500"
@@ -281,6 +307,13 @@ export default function CarsPage() {
                         </span>
                       )}
                     </div>
+                    {car.verified && (
+                      <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-emerald-600 text-xs font-medium px-2 py-1 rounded-full flex items-center gap-1">
+                        <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                    )}
                     {/* Price */}
                     <div className="absolute bottom-3 right-3 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-lg">
                       <span className="font-bold text-gray-900">{car.price}</span>

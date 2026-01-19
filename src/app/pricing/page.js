@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -7,86 +10,155 @@ const packages = [
     name: "Basic",
     price: "Free",
     period: "",
-    description: "Perfect for small businesses wanting online visibility",
+    description: "Presence only. Perfect for browsing the platform.",
     popular: false,
-    color: "bg-gray-100",
+    color: "bg-gray-50",
+    borderColor: "border-gray-200",
     buttonColor: "bg-gray-900 hover:bg-gray-800",
+    badge: null,
     features: [
-      "Company profile with logo",
-      "Address & contact details",
-      "Link to your website",
-      "Searchable in directory",
-      "Category listing",
+      { text: "Browse companies, jobs, real estate, cars", included: true },
+      { text: "Use car comparison feature", included: true },
+      { text: "Post community service requests", included: true },
+      { text: "View company profiles", included: true },
     ],
     notIncluded: [
+      "Create company profile",
+      "Create listings",
+      "Respond to community requests",
       "Featured placement",
-      "Job postings",
-      "Banner ads",
-      "Mini website",
-    ],
-  },
-  {
-    name: "Pro",
-    price: "CHF 49",
-    period: "/month",
-    description: "For growing, regionally focused companies",
-    popular: false,
-    color: "bg-teal-50",
-    buttonColor: "bg-teal-600 hover:bg-teal-700",
-    features: [
-      "Everything in Basic",
-      "Logo in category slider",
-      "Article in Expert Blog",
-      "Priority in search results",
-      "Social media links",
-      "Customer reviews enabled",
-    ],
-    notIncluded: [
-      "Job postings",
-      "Banner placement",
-      "Mini website",
     ],
   },
   {
     name: "Business+",
-    price: "CHF 99",
+    price: "CHF XX",
     period: "/month",
-    description: "Active companies with hiring needs",
-    popular: true,
+    description: "Higher visibility + first leads for growing businesses.",
+    popular: false,
     color: "bg-emerald-50",
+    borderColor: "border-emerald-200",
     buttonColor: "bg-emerald-600 hover:bg-emerald-700",
+    badge: null,
     features: [
-      "Everything in Pro",
-      "Up to 3 job postings/year",
-      "3 months banner placement",
-      "Highlighted in Industry Guide",
-      "Reply to Community Requests",
-      "Analytics dashboard",
-      "Priority support",
+      { text: "Company profile (created by team)", included: true },
+      { text: "Logo, address, contact details", included: true },
+      { text: "Link to website + Social media", included: true },
+      { text: "Searchable in directory", included: true },
+      { text: "\"Request a Quote\" button", included: true },
+      { text: "Inquiry form on profile", included: true },
+      { text: "Category slider (rotating)", included: true },
+      { text: "Higher priority in search", included: true },
+      { text: "1x Company of the Week", included: true },
+      { text: "Up to 3 images in profile", included: true },
+      { text: "Mini blog access (2 posts/year)", included: true },
+      { text: "Respond to community requests", included: true },
     ],
     notIncluded: [
-      "Custom mini website",
+      "Videos",
+      "Promotions / actions",
+      "Partner badge",
+      "Bonus listings",
+    ],
+  },
+  {
+    name: "Premium",
+    price: "CHF XX",
+    period: "/month",
+    description: "Active marketing + strong visibility. Best value!",
+    popular: true,
+    color: "bg-gradient-to-br from-emerald-50 to-teal-50",
+    borderColor: "border-emerald-300",
+    buttonColor: "bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600",
+    badge: "Connectiva Partner",
+    features: [
+      { text: "Everything in Business+", included: true },
+      { text: "Video section (1 video)", included: true },
+      { text: "Up to 10 images in gallery", included: true },
+      { text: "Logo in Partner Slider (homepage)", included: true },
+      { text: "Blog access (4 posts/year)", included: true },
+      { text: "Promotions / actions (4/year)", included: true },
+      { text: "Significantly higher priority", included: true },
+      { text: "Partner badge \"Connectiva Partner\"", included: true },
+      { text: "Bonus: 5 cars OR 2 real estate OR 2 jobs", included: true },
+    ],
+    notIncluded: [
+      "Mini website",
+      "Dedicated contact form",
+      "Unlimited content",
     ],
   },
   {
     name: "Platinum",
-    price: "CHF 199",
+    price: "CHF XX",
     period: "/month",
-    description: "Maximum online presence",
+    description: "Maximum presence + own mini website.",
     popular: false,
-    color: "bg-gradient-to-br from-lime-50 to-cyan-50",
-    buttonColor: "bg-gradient-to-r from-lime-500 to-cyan-500 hover:from-lime-600 hover:to-cyan-600",
+    color: "bg-gradient-to-br from-lime-50 via-emerald-50 to-cyan-50",
+    borderColor: "border-transparent ring-2 ring-gradient",
+    buttonColor: "bg-gradient-to-r from-lime-500 via-emerald-500 to-cyan-500 hover:from-lime-600 hover:via-emerald-600 hover:to-cyan-600",
+    badge: "Platinum Partner",
     features: [
-      "Everything in Business+",
-      "Custom mini website",
-      "Photo gallery",
-      "Contact form integration",
-      "Google Maps integration",
-      "Unlimited job postings",
-      "Premium banner placement",
-      "Dedicated account manager",
+      { text: "Everything in Premium", included: true },
+      { text: "Dedicated mini website", included: true },
+      { text: "Hero slider + Image gallery", included: true },
+      { text: "Multiple videos", included: true },
+      { text: "Extended text sections", included: true },
+      { text: "Dedicated contact form", included: true },
+      { text: "Highest priority in all listings", included: true },
+      { text: "2x Company of the Week/year", included: true },
+      { text: "Logo in category headers", included: true },
+      { text: "Unlimited blog posts", included: true },
+      { text: "12 promotions/year", included: true },
+      { text: "Platinum Partner badge", included: true },
+      { text: "Bonus: 10 cars OR 4 real estate OR 4 jobs", included: true },
     ],
     notIncluded: [],
+  },
+];
+
+const addOns = [
+  {
+    category: "Jobs",
+    description: "Post job openings to attract talent",
+    options: [
+      { slots: "1 position", price: "CHF XX" },
+      { slots: "3 positions", price: "CHF XX" },
+      { slots: "5 positions", price: "CHF XX" },
+    ],
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    ),
+  },
+  {
+    category: "Real Estate",
+    description: "List properties for sale or rent",
+    options: [
+      { slots: "1 listing", price: "CHF XX" },
+      { slots: "3 listings", price: "CHF XX" },
+      { slots: "5 listings", price: "CHF XX" },
+    ],
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+      </svg>
+    ),
+  },
+  {
+    category: "Vehicles",
+    description: "Showcase your vehicle inventory",
+    options: [
+      { slots: "5 vehicles", price: "CHF XX" },
+      { slots: "15 vehicles", price: "CHF XX" },
+      { slots: "50 vehicles", price: "CHF XX" },
+    ],
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+      </svg>
+    ),
   },
 ];
 
@@ -94,50 +166,83 @@ const sponsorships = [
   {
     name: "Homepage Banner (Slider)",
     description: "Rotating banner on homepage with companies from various sectors",
-    price: "CHF 299/month",
+    price: "Contact Us",
   },
   {
     name: "Category Page Banner",
     description: "Rotating banner on category pages with same-industry companies",
-    price: "CHF 199/month",
+    price: "Contact Us",
   },
   {
     name: "Premium Sponsor",
     description: "Fixed medium-size banner on homepage visible all year",
-    price: "CHF 499/month",
+    price: "Contact Us",
   },
   {
     name: "Gold Sponsor",
     description: "Large full-width banner on homepage fixed all year",
-    price: "CHF 999/month",
+    price: "Contact Us",
   },
   {
     name: "Elite Sponsor",
     description: "Large homepage banner + footer banner on ALL pages",
-    price: "CHF 1,499/month",
+    price: "Contact Us",
   },
 ];
 
+const comparisonFeatures = [
+  { feature: "Browse Platform", basic: true, business: true, premium: true, platinum: true },
+  { feature: "Car Comparison", basic: true, business: true, premium: true, platinum: true },
+  { feature: "Post Community Requests", basic: true, business: true, premium: true, platinum: true },
+  { feature: "Company Profile", basic: false, business: true, premium: true, platinum: true },
+  { feature: "Request a Quote Button", basic: false, business: true, premium: true, platinum: true },
+  { feature: "Social Media Links", basic: false, business: true, premium: true, platinum: true },
+  { feature: "Profile Images", basic: "-", business: "3", premium: "10", platinum: "Unlimited" },
+  { feature: "Video Section", basic: false, business: false, premium: "1", platinum: "Multiple" },
+  { feature: "Category Slider", basic: false, business: true, premium: true, platinum: true },
+  { feature: "Partner Slider (Homepage)", basic: false, business: false, premium: true, platinum: true },
+  { feature: "Blog Posts / Year", basic: "-", business: "2", premium: "4", platinum: "Unlimited" },
+  { feature: "Promotions / Year", basic: "-", business: "-", premium: "4", platinum: "12" },
+  { feature: "Company of Week", basic: "-", business: "1x", premium: "-", platinum: "2x/year" },
+  { feature: "Partner Badge", basic: false, business: false, premium: true, platinum: true },
+  { feature: "Mini Website", basic: false, business: false, premium: false, platinum: true },
+  { feature: "Contact Form", basic: false, business: false, premium: false, platinum: true },
+  { feature: "Search Priority", basic: "Standard", business: "Higher", premium: "Highest", platinum: "TOP" },
+  { feature: "Bonus Car Listings", basic: "-", business: "-", premium: "5", platinum: "10" },
+  { feature: "Bonus Real Estate", basic: "-", business: "-", premium: "2", platinum: "4" },
+  { feature: "Bonus Job Postings", basic: "-", business: "-", premium: "2", platinum: "4" },
+];
+
 const faqs = [
+  {
+    question: "What does 'CHF XX' mean in pricing?",
+    answer: "Our platform is in market validation phase. Final pricing will be confirmed soon. All prices are configurable and will be displayed once finalized.",
+  },
   {
     question: "Can I upgrade or downgrade my plan?",
     answer: "Yes, you can change your plan at any time. Upgrades take effect immediately, while downgrades will apply at the start of your next billing cycle.",
   },
   {
-    question: "Is there a contract or commitment?",
-    answer: "No long-term contracts required. All plans are billed monthly and you can cancel anytime.",
+    question: "How are company profiles created?",
+    answer: "Company profiles are professionally created by the Rhy-Connect team. Once you purchase a package, our team will work with you to build your profile.",
+  },
+  {
+    question: "What is a Bonus Package?",
+    answer: "Premium and Platinum members can choose ONE bonus package: Cars, Real Estate, or Jobs. These provide additional listing slots as part of your subscription.",
+  },
+  {
+    question: "Can I purchase Add-Ons without a subscription?",
+    answer: "Add-ons are available for both Connectiva and Non-Connectiva customers. You can purchase them separately to list jobs, properties, or vehicles.",
   },
   {
     question: "What payment methods do you accept?",
-    answer: "We accept all major credit cards, bank transfers, and TWINT for Swiss customers.",
-  },
-  {
-    question: "Can I get a refund?",
-    answer: "We offer a 14-day money-back guarantee for all paid plans if you're not satisfied.",
+    answer: "We accept all major credit cards, bank transfers, and TWINT for Swiss customers. All prices are in CHF (Swiss Francs).",
   },
 ];
 
 export default function PricingPage() {
+  const [showComparison, setShowComparison] = useState(false);
+
   return (
     <>
       <Navbar />
@@ -156,7 +261,13 @@ export default function PricingPage() {
                 </span>
               </h1>
               <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                Choose the perfect package for your business. No hidden fees, no surprises.
+                Choose the perfect package for your business. Browsing is always free!
+              </p>
+              <p className="text-amber-400 text-sm mt-4 flex items-center justify-center gap-2">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                </svg>
+                Prices in market validation phase - final pricing coming soon
               </p>
             </div>
           </div>
@@ -165,24 +276,39 @@ export default function PricingPage() {
         {/* Pricing Cards */}
         <section className="py-16 sm:py-20 -mt-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
               {packages.map((pkg, index) => (
                 <div
                   key={index}
-                  className={`${pkg.color} rounded-2xl p-6 relative ${
-                    pkg.popular ? "ring-2 ring-emerald-500 shadow-lg" : "shadow-sm"
-                  }`}
+                  className={`${pkg.color} rounded-2xl p-6 relative border ${pkg.borderColor} ${
+                    pkg.popular ? "shadow-xl scale-105 z-10" : "shadow-sm"
+                  } ${pkg.name === "Platinum" ? "ring-2 ring-gradient-to-r from-lime-500 to-cyan-500" : ""} flex flex-col`}
                 >
                   {pkg.popular && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                       <span className="bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-                        MOST POPULAR
+                        BEST VALUE
+                      </span>
+                    </div>
+                  )}
+
+                  {pkg.name === "Platinum" && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                      <span className="bg-gradient-to-r from-lime-500 to-cyan-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                        MAXIMUM PRESENCE
                       </span>
                     </div>
                   )}
 
                   <div className="mb-6">
-                    <h3 className="text-gray-900 font-bold text-xl mb-2">{pkg.name}</h3>
+                    <div className="flex items-center gap-2 mb-2">
+                      <h3 className="text-gray-900 font-bold text-xl">{pkg.name}</h3>
+                      {pkg.badge && (
+                        <span className="text-xs bg-emerald-500/10 text-emerald-600 px-2 py-0.5 rounded-full">
+                          {pkg.badge}
+                        </span>
+                      )}
+                    </div>
                     <div className="flex items-baseline gap-1">
                       <span className="text-3xl font-bold text-gray-900">{pkg.price}</span>
                       <span className="text-gray-500">{pkg.period}</span>
@@ -190,18 +316,18 @@ export default function PricingPage() {
                     <p className="text-gray-500 text-sm mt-2">{pkg.description}</p>
                   </div>
 
-                  <ul className="space-y-3 mb-6">
+                  <ul className="space-y-2.5 flex-1">
                     {pkg.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm">
-                        <svg className="w-5 h-5 text-emerald-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span className="text-gray-700">{feature}</span>
+                        <span className="text-gray-700">{feature.text}</span>
                       </li>
                     ))}
                     {pkg.notIncluded.map((feature, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm">
-                        <svg className="w-5 h-5 text-gray-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 text-gray-300 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                         </svg>
                         <span className="text-gray-400">{feature}</span>
@@ -211,37 +337,183 @@ export default function PricingPage() {
 
                   <Link
                     href="/get-started"
-                    className={`block w-full text-center ${pkg.buttonColor} text-white py-3 rounded-lg font-medium transition-colors`}
+                    className={`block w-full text-center ${pkg.buttonColor} text-white py-3 rounded-lg font-medium transition-all mt-6`}
                   >
-                    {pkg.price === "Free" ? "Get Started" : "Choose Plan"}
+                    {pkg.price === "Free" ? "Browse Free" : "Get Started"}
                   </Link>
                 </div>
               ))}
+            </div>
+
+            {/* Show Comparison Toggle */}
+            <div className="text-center mt-10">
+              <button
+                onClick={() => setShowComparison(!showComparison)}
+                className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-medium transition-colors"
+              >
+                {showComparison ? "Hide" : "Show"} Full Comparison
+                <svg className={`w-4 h-4 transition-transform ${showComparison ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* Full Comparison Table */}
+        {showComparison && (
+          <section className="pb-16 sm:pb-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="bg-gray-50 border-b border-gray-200">
+                        <th className="text-left py-4 px-6 font-semibold text-gray-900">Feature</th>
+                        <th className="text-center py-4 px-4 font-semibold text-gray-900">Basic</th>
+                        <th className="text-center py-4 px-4 font-semibold text-gray-900">Business+</th>
+                        <th className="text-center py-4 px-4 font-semibold text-emerald-600 bg-emerald-50">Premium</th>
+                        <th className="text-center py-4 px-4 font-semibold text-transparent bg-clip-text bg-gradient-to-r from-lime-500 to-cyan-500">Platinum</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {comparisonFeatures.map((row, index) => (
+                        <tr key={index} className="border-b border-gray-100 hover:bg-gray-50">
+                          <td className="py-3 px-6 text-gray-700 text-sm">{row.feature}</td>
+                          <td className="py-3 px-4 text-center">
+                            {typeof row.basic === "boolean" ? (
+                              row.basic ? (
+                                <svg className="w-5 h-5 text-emerald-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                </svg>
+                              ) : (
+                                <svg className="w-5 h-5 text-gray-300 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                              )
+                            ) : (
+                              <span className="text-gray-500 text-sm">{row.basic}</span>
+                            )}
+                          </td>
+                          <td className="py-3 px-4 text-center">
+                            {typeof row.business === "boolean" ? (
+                              row.business ? (
+                                <svg className="w-5 h-5 text-emerald-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                </svg>
+                              ) : (
+                                <svg className="w-5 h-5 text-gray-300 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                              )
+                            ) : (
+                              <span className="text-gray-700 text-sm font-medium">{row.business}</span>
+                            )}
+                          </td>
+                          <td className="py-3 px-4 text-center bg-emerald-50/50">
+                            {typeof row.premium === "boolean" ? (
+                              row.premium ? (
+                                <svg className="w-5 h-5 text-emerald-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                </svg>
+                              ) : (
+                                <svg className="w-5 h-5 text-gray-300 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                              )
+                            ) : (
+                              <span className="text-emerald-700 text-sm font-medium">{row.premium}</span>
+                            )}
+                          </td>
+                          <td className="py-3 px-4 text-center">
+                            {typeof row.platinum === "boolean" ? (
+                              row.platinum ? (
+                                <svg className="w-5 h-5 text-emerald-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                </svg>
+                              ) : (
+                                <svg className="w-5 h-5 text-gray-300 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                              )
+                            ) : (
+                              <span className="text-gray-900 text-sm font-bold">{row.platinum}</span>
+                            )}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Add-On Packages */}
+        <section className="py-16 sm:py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <span className="text-emerald-500 text-sm font-semibold uppercase tracking-wider">
+                ADD-ON PACKAGES
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold mt-3 text-gray-900">
+                Boost Your Listings
+              </h2>
+              <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
+                Need more listings? Purchase add-on slots for Jobs, Real Estate, or Vehicles.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {addOns.map((addon, index) => (
+                <div key={index} className="bg-gray-50 rounded-xl p-6 border border-gray-100">
+                  <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 mb-4">
+                    {addon.icon}
+                  </div>
+                  <h3 className="font-bold text-gray-900 text-lg mb-2">{addon.category}</h3>
+                  <p className="text-gray-500 text-sm mb-4">{addon.description}</p>
+                  <div className="space-y-2">
+                    {addon.options.map((option, i) => (
+                      <div key={i} className="flex items-center justify-between bg-white rounded-lg px-4 py-2 border border-gray-100">
+                        <span className="text-gray-700 text-sm">{option.slots}</span>
+                        <span className="text-emerald-600 font-semibold text-sm">{option.price}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="text-center mt-8">
+              <p className="text-gray-500 text-sm">
+                Add-ons available for both Connectiva and Non-Connectiva customers
+              </p>
             </div>
           </div>
         </section>
 
         {/* Sponsorship Section */}
-        <section className="py-16 sm:py-20 bg-white">
+        <section className="py-16 sm:py-20 bg-[#0f1419]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <span className="text-emerald-500 text-sm font-semibold uppercase tracking-wider">
                 SPONSORSHIPS
               </span>
-              <h2 className="text-3xl sm:text-4xl font-bold mt-3 text-gray-900">
-                Additional Visibility Options
+              <h2 className="text-3xl sm:text-4xl font-bold mt-3 text-white">
+                Premium Visibility Options
               </h2>
-              <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
-                Boost your presence with premium banner placements across the platform.
+              <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
+                Maximize your brand exposure with premium banner placements across the platform.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {sponsorships.map((sponsor, index) => (
-                <div key={index} className="bg-gray-50 rounded-xl p-6 border border-gray-100">
-                  <h3 className="font-bold text-gray-900 text-lg mb-2">{sponsor.name}</h3>
-                  <p className="text-gray-500 text-sm mb-4">{sponsor.description}</p>
-                  <div className="text-emerald-600 font-bold text-lg">{sponsor.price}</div>
+                <div key={index} className="bg-[#1a2332] rounded-xl p-6 border border-gray-700/50">
+                  <h3 className="font-bold text-white text-lg mb-2">{sponsor.name}</h3>
+                  <p className="text-gray-400 text-sm mb-4">{sponsor.description}</p>
+                  <div className="text-emerald-400 font-bold text-lg">{sponsor.price}</div>
                 </div>
               ))}
             </div>
@@ -249,7 +521,7 @@ export default function PricingPage() {
             <div className="text-center mt-10">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 bg-gray-900 hover:bg-gray-800 text-white px-8 py-3 rounded-lg font-medium transition-colors"
+                className="inline-flex items-center gap-2 bg-white text-gray-900 px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors"
               >
                 Contact for Sponsorships
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -305,15 +577,23 @@ export default function PricingPage() {
             <p className="text-white/90 text-lg mb-8">
               Join hundreds of businesses already thriving on Rhy-Connect.
             </p>
-            <Link
-              href="/get-started"
-              className="inline-flex items-center gap-2 bg-white text-emerald-600 px-8 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors"
-            >
-              Get Started Free
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                href="/get-started"
+                className="inline-flex items-center gap-2 bg-white text-emerald-600 px-8 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+              >
+                Get Started
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+              <Link
+                href="/companies"
+                className="inline-flex items-center gap-2 bg-white/10 border border-white/30 text-white px-8 py-3 rounded-lg font-medium hover:bg-white/20 transition-colors"
+              >
+                Browse Free
+              </Link>
+            </div>
           </div>
         </section>
       </main>

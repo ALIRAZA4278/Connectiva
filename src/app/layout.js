@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Rhy-Connect.ch | Rhine Valley Business Hub",
+  title: "connectiva | Rhine Valley Business Hub",
   description: "The central platform for companies, real estate, vehicles, and jobs in the Rhine Valley region. Connect with local businesses and strengthen regional partnerships.",
   keywords: "Rhine Valley, business directory, local companies, Switzerland, regional hub",
 };

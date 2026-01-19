@@ -59,7 +59,7 @@ const AboutUs = () => {
 
             {/* Description */}
             <p className="text-gray-600 text-base sm:text-lg mb-8 leading-relaxed">
-              Rhy-Connect.ch was born from a simple observation: local businesses in the Rhine Valley needed a better way to connect with their community. We're building more than a directory—we're creating a digital ecosystem where companies, individuals, and customers come together.
+              connectiva was born from a simple observation: local businesses in the Rhine Valley needed a better way to connect with their community. We're building more than a directory—we're creating a digital ecosystem where companies, individuals, and customers come together.
             </p>
 
             {/* Feature Items */}

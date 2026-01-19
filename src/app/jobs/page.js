@@ -23,6 +23,8 @@ const jobs = [
     description: "We're looking for an experienced software developer to join our growing team. Work on exciting projects using modern technologies.",
     postedAt: "2 days ago",
     featured: true,
+    package: "Platinum",
+    verified: true,
   },
   {
     id: 2,
@@ -36,6 +38,8 @@ const jobs = [
     description: "Lead our prestigious hotel operations and deliver exceptional guest experiences in the heart of the Rhine Valley.",
     postedAt: "3 days ago",
     featured: true,
+    package: "Premium",
+    verified: true,
   },
   {
     id: 3,
@@ -49,6 +53,8 @@ const jobs = [
     description: "Support our medical team in providing quality healthcare services to patients in our modern clinic.",
     postedAt: "5 days ago",
     featured: false,
+    package: "Business+",
+    verified: true,
   },
   {
     id: 4,
@@ -62,6 +68,8 @@ const jobs = [
     description: "Analyze financial data and provide insights to support strategic business decisions.",
     postedAt: "1 week ago",
     featured: false,
+    package: "Business+",
+    verified: true,
   },
   {
     id: 5,
@@ -75,6 +83,8 @@ const jobs = [
     description: "Oversee construction projects from planning to completion, ensuring quality and safety standards.",
     postedAt: "1 week ago",
     featured: true,
+    package: "Business+",
+    verified: true,
   },
   {
     id: 6,
@@ -88,6 +98,8 @@ const jobs = [
     description: "Join our marketing team and learn digital marketing strategies for a growing tech platform.",
     postedAt: "3 days ago",
     featured: false,
+    package: "Basic",
+    verified: false,
   },
   {
     id: 7,
@@ -101,6 +113,8 @@ const jobs = [
     description: "Inspire young minds and deliver quality education in our international school setting.",
     postedAt: "2 weeks ago",
     featured: false,
+    package: "Basic",
+    verified: false,
   },
   {
     id: 8,
@@ -114,8 +128,17 @@ const jobs = [
     description: "Teach skiing to visitors of all levels in one of Switzerland's premier ski destinations.",
     postedAt: "4 days ago",
     featured: false,
+    package: "Basic",
+    verified: false,
   },
 ];
+
+const packageColors = {
+  Basic: "bg-gray-500",
+  "Business+": "bg-emerald-500",
+  Premium: "bg-gradient-to-r from-emerald-500 to-teal-500",
+  Platinum: "bg-gradient-to-r from-lime-500 via-emerald-500 to-cyan-500",
+};
 
 export default function JobsPage() {
   const [selectedType, setSelectedType] = useState("All Types");
@@ -252,12 +275,23 @@ export default function JobsPage() {
                         {/* Content */}
                         <div className="flex-1">
                           <div className="flex flex-wrap items-center gap-2 mb-2">
-                            <span className="bg-emerald-500 text-white text-xs font-medium px-2.5 py-1 rounded-full">
+                            <span className={`${packageColors[job.package]} text-white text-xs font-medium px-2.5 py-1 rounded-full`}>
+                              {job.package}
+                            </span>
+                            <span className="bg-yellow-500 text-white text-xs font-medium px-2.5 py-1 rounded-full">
                               Featured
                             </span>
                             <span className="bg-white text-gray-600 text-xs font-medium px-2.5 py-1 rounded-full border">
                               {job.type}
                             </span>
+                            {job.verified && (
+                              <span className="text-emerald-600 text-xs flex items-center gap-0.5">
+                                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                </svg>
+                                Verified
+                              </span>
+                            )}
                             <span className="text-gray-400 text-xs">{job.postedAt}</span>
                           </div>
                           <h3 className="font-bold text-gray-900 text-xl mb-1">{job.title}</h3>
@@ -304,12 +338,22 @@ export default function JobsPage() {
                     {/* Content */}
                     <div className="flex-1">
                       <div className="flex flex-wrap items-center gap-2 mb-2">
+                        <span className={`${packageColors[job.package]} text-white text-xs font-medium px-2.5 py-1 rounded-full`}>
+                          {job.package}
+                        </span>
                         <span className="bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-1 rounded-full">
                           {job.type}
                         </span>
                         <span className="bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-1 rounded-full">
                           {job.category}
                         </span>
+                        {job.verified && (
+                          <span className="text-emerald-600 text-xs flex items-center gap-0.5">
+                            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                            </svg>
+                          </span>
+                        )}
                         <span className="text-gray-400 text-xs">{job.postedAt}</span>
                       </div>
                       <h3 className="font-bold text-gray-900 text-lg mb-1 hover:text-emerald-600 transition-colors">{job.title}</h3>
