@@ -1,22 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const SearchSection = () => {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const [category, setCategory] = useState("");
   const [location, setLocation] = useState("");
 
   const categories = [
-    "All Categories",
-    "Restaurants",
-    "Hotels",
-    "Healthcare",
-    "Automotive",
-    "Real Estate",
-    "Technology",
-    "Education",
-    "Finance",
+    { name: "Companies", path: "/companies" },
+    { name: "Jobs", path: "/jobs" },
+    { name: "Real Estate", path: "/real-estate" },
+    { name: "Cars", path: "/cars" },
   ];
 
   const locations = [
@@ -28,12 +25,25 @@ const SearchSection = () => {
     "Maienfeld",
     "Bad Ragaz",
     "Sargans",
+    "St. Gallen",
   ];
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log({ searchQuery, category, location });
-    // Handle search logic
+
+    // Build the search URL
+    const selectedCategory = categories.find(cat => cat.name === category);
+    let basePath = selectedCategory ? selectedCategory.path : "/companies";
+
+    // Build query parameters
+    const params = new URLSearchParams();
+    if (searchQuery) params.set("q", searchQuery);
+    if (location && location !== "All Locations") params.set("location", location);
+
+    const queryString = params.toString();
+    const url = queryString ? `${basePath}?${queryString}` : basePath;
+
+    router.push(url);
   };
 
   return (
@@ -61,7 +71,7 @@ const SearchSection = () => {
               </div>
               <input
                 type="text"
-                placeholder="Search companies, services..."
+                placeholder="Search companies, jobs, properties, cars..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-12 pr-4 py-3 sm:py-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-gray-700 bg-white"
@@ -92,8 +102,8 @@ const SearchSection = () => {
               >
                 <option value="">Category</option>
                 {categories.map((cat) => (
-                  <option key={cat} value={cat}>
-                    {cat}
+                  <option key={cat.name} value={cat.name}>
+                    {cat.name}
                   </option>
                 ))}
               </select>
