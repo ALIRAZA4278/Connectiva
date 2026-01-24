@@ -213,6 +213,85 @@ const comparisonFeatures = [
   { feature: "Bonus Job Postings", basic: "-", business: "-", premium: "2", platinum: "4" },
 ];
 
+// Listing rules for "Who Can Do What" section
+const listingRules = [
+  {
+    title: "Property for Rent/Sale",
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+      </svg>
+    ),
+    rules: [
+      { user: "Private Person", requirement: "Max. 1 listing (Free)", highlight: true },
+      { user: "Company (Basic)", requirement: "Max. 1 listing (Free)", highlight: true },
+      { user: "Business+ / Premium / Platinum", requirement: "Multiple listings based on package", highlight: false },
+    ],
+  },
+  {
+    title: "Vehicle for Sale",
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+      </svg>
+    ),
+    rules: [
+      { user: "Private Person", requirement: "Max. 1 listing (Free)", highlight: true },
+      { user: "Company (Basic)", requirement: "Max. 1 listing (Free)", highlight: true },
+      { user: "Business+ / Premium / Platinum", requirement: "Multiple listings based on package", highlight: false },
+    ],
+  },
+  {
+    title: "Job Applications",
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      </svg>
+    ),
+    rules: [
+      { user: "Job-Seeker Profile", requirement: "Free for all registered users", highlight: true },
+      { user: "Apply for Jobs", requirement: "Free - No package required", highlight: true },
+    ],
+  },
+  {
+    title: "Job Postings",
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    ),
+    rules: [
+      { user: "Private Individuals", requirement: "NOT allowed to post jobs", highlight: false, notAllowed: true },
+      { user: "Companies (Business+, Premium, Platinum)", requirement: "Can post jobs based on package", highlight: false },
+    ],
+  },
+  {
+    title: "Community Requests",
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+      </svg>
+    ),
+    rules: [
+      { user: "Post Request", requirement: "Any registered user can post", highlight: true },
+      { user: "Reply to Request", requirement: "Only Business+, Premium, Platinum", highlight: false },
+    ],
+  },
+  {
+    title: "Moderation",
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    ),
+    rules: [
+      { user: "Community Replies", requirement: "Manually reviewed before publishing", highlight: false },
+      { user: "Protection", requirement: "Against spam, scams & misuse", highlight: true },
+    ],
+  },
+];
+
 const faqs = [
   {
     question: "What does 'CHF XX' mean in pricing?",
@@ -237,6 +316,22 @@ const faqs = [
   {
     question: "What payment methods do you accept?",
     answer: "We accept all major credit cards, bank transfers, and TWINT for Swiss customers. All prices are in CHF (Swiss Francs).",
+  },
+  {
+    question: "Can private persons list properties or cars for free?",
+    answer: "Yes! Private persons can list 1 property (for rent or sale) and 1 car for free with the Basic plan. Companies need a package if they want to list more than one.",
+  },
+  {
+    question: "Do I need to pay to apply for jobs?",
+    answer: "No, applying for jobs is completely free for all users. You don't need any package to browse and apply for job listings.",
+  },
+  {
+    question: "Who can post job listings?",
+    answer: "Only listed companies with an active package can post job listings. The number of job posts depends on the selected package tier.",
+  },
+  {
+    question: "How do community requests work?",
+    answer: "Any registered user can post a community request for free. However, only companies with a paid package can respond to these requests.",
   },
 ];
 
@@ -489,6 +584,102 @@ export default function PricingPage() {
               <p className="text-gray-500 text-sm">
                 Add-ons available for both Connectiva and Non-Connectiva customers
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Who Can Do What Section */}
+        <section className="py-16 sm:py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <span className="text-emerald-500 text-sm font-semibold uppercase tracking-wider">
+                LISTING RULES
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold mt-3 text-gray-900">
+                Who Can Do What?
+              </h2>
+              <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
+                Understand what you can do on our platform based on your account type.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {listingRules.map((item, index) => (
+                <div key={index} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600">
+                      {item.icon}
+                    </div>
+                    <h3 className="font-bold text-gray-900 text-lg">{item.title}</h3>
+                  </div>
+                  <div className="space-y-3">
+                    {item.rules.map((rule, i) => (
+                      <div key={i} className={`flex items-start gap-3 p-3 rounded-lg ${
+                        rule.notAllowed ? 'bg-red-50 border border-red-200' :
+                        rule.highlight ? 'bg-emerald-50 border border-emerald-200' : 'bg-gray-50'
+                      }`}>
+                        <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                          rule.notAllowed ? 'bg-red-500 text-white' :
+                          rule.highlight ? 'bg-emerald-500 text-white' : 'bg-gray-300 text-white'
+                        }`}>
+                          {rule.notAllowed ? (
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                          ) : rule.highlight ? (
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                          ) : (
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                          )}
+                        </div>
+                        <div>
+                          <p className="text-gray-900 font-medium text-sm">{rule.user}</p>
+                          <p className={`text-sm ${
+                            rule.notAllowed ? 'text-red-600' :
+                            rule.highlight ? 'text-emerald-700' : 'text-gray-500'
+                          }`}>{rule.requirement}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Quick Summary */}
+            <div className="mt-12 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl p-8 text-white">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div className="text-center">
+                  <div className="text-3xl font-bold mb-2">FREE</div>
+                  <p className="text-white/80 text-sm">Browse all content without registration</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold mb-2">1 FREE</div>
+                  <p className="text-white/80 text-sm">Property & Vehicle listing for registered users</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold mb-2">FREE</div>
+                  <p className="text-white/80 text-sm">Job-seeker profile & applications</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold mb-2">FREE</div>
+                  <p className="text-white/80 text-sm">Post community requests</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Important Note */}
+            <div className="mt-6 bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-start gap-3">
+              <svg className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+              </svg>
+              <div>
+                <p className="text-amber-800 font-medium text-sm">Important: All community request replies are manually reviewed before publishing to protect against spam and misuse.</p>
+              </div>
             </div>
           </div>
         </section>
